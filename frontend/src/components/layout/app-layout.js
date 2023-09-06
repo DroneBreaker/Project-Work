@@ -22,6 +22,7 @@ import { BookForm } from "../book-form/book-form"
 import { Book } from "../book/book"
 import { WithLoginProtector } from "../access-control/login-protector"
 import { WithAdminProtector } from "../access-control/admin-protector"
+import Home from "../home/home"
 
 
 export const AppLayout = () => {
@@ -57,7 +58,8 @@ export const AppLayout = () => {
     useEffect(() => {
         if (!user) {
             navigate("/")
-        } else if (isAdmin) {
+        } else
+         if (isAdmin) {
             navigate("/admin/books/add")
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -136,7 +138,10 @@ export const AppLayout = () => {
                 </Container>
             </AppBar>
             <Routes>
-                <Route path="/books" exact element={<BooksList />} />
+                <Route path="/" exact element={<Home />} />
+
+                <Route path="/books" element={<BooksList />} />
+                
                 <Route
                     path="/books/:bookIsbn"
                     element={
@@ -145,6 +150,7 @@ export const AppLayout = () => {
                         </WithLoginProtector>
                     }
                 />
+
                 <Route
                     path="/admin/books/add"
                     element={
@@ -156,6 +162,7 @@ export const AppLayout = () => {
                     }
                     exact
                 />
+
                 <Route
                     path="/admin/books/:bookIsbn/edit"
                     element={
@@ -166,8 +173,9 @@ export const AppLayout = () => {
                         </WithLoginProtector>
                     }
                 />
-                <Route path="*" element={<Navigate to="/books" replace />} />
+                {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
             </Routes>
+            
             <LoginDialog
                 open={openLoginDialog}
                 handleSubmit={handleLoginSubmit}
