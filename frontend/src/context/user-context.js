@@ -38,33 +38,33 @@ const UserProvider = ({ children }) => {
             setUser(user)
         }
     }*/
-    const loginUser = async (username,password) => {
+    const loginUser = async (username, password) => {
         try {
             // Sign in with the email and password
-           var user =  await signInWithEmailAndPassword(auth, username, password);
+            var user = await signInWithEmailAndPassword(auth, username, password);
             NotificationManager.success("Logged in successfully")
-            setUser(user);
-          } catch (error) {
+            setUser(user.user);
+        } catch (error) {
             // Handle sign-in errors
             console.error('Sign-in error:', error);
-        
+
             // Display the error message to the user
             if (error.code === 'auth/user-not-found') {
-         
-              NotificationManager.error('User not found')
+
+                NotificationManager.error('User not found')
             } else if (error.code === 'auth/wrong-password') {
-              // Handle the case where the password is incorrect
-              NotificationManager.error('Incorrect password')
-              
+                // Handle the case where the password is incorrect
+                NotificationManager.error('Incorrect password')
+
             } else {
-              // Handle other authentication errors
-              NotificationManager.error(error.message)
+                // Handle other authentication errors
+                NotificationManager.error(error.message)
             }
-        
+
             // You can also display the error message to the user using a notification or alert
             // For example, if you are using a notification library like react-toastify:
             // toast.error(error.message);
-          }
+        }
         /*.then((userCredential) => {
             NotificationManager.success("Logged in successfully")
             setUser(userCredential)

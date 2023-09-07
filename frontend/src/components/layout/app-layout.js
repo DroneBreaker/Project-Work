@@ -59,12 +59,13 @@ export const AppLayout = () => {
         if (!user) {
             navigate("/")
         } else
-         if (isAdmin) {
-            navigate("/admin/books/add")
-        }
+            if (isAdmin) {
+                navigate("/admin/books/add")
+            }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user, isAdmin])
 
+    console.log("user", user)
     return (
         <>
             <AppBar position="static">
@@ -96,7 +97,7 @@ export const AppLayout = () => {
                                 <>
                                     <Tooltip title="Open settings">
                                         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                            <Avatar> {user.username.charAt(0).toUpperCase()} </Avatar>
+                                            <Avatar> {user?.username?.charAt(0).toUpperCase()} </Avatar>
                                         </IconButton>
                                     </Tooltip>
                                     <Menu
@@ -141,7 +142,7 @@ export const AppLayout = () => {
                 <Route path="/" exact element={<Home />} />
 
                 <Route path="/books" element={<BooksList />} />
-                
+
                 <Route
                     path="/books/:bookIsbn"
                     element={
@@ -175,7 +176,7 @@ export const AppLayout = () => {
                 />
                 {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
             </Routes>
-            
+
             <LoginDialog
                 open={openLoginDialog}
                 handleSubmit={handleLoginSubmit}
