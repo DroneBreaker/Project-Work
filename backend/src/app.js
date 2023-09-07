@@ -25,7 +25,7 @@ app.use(
   })
 )
 
-app.use("/v1", apiV1)
+app.use(apiV1)
 
 app.use((req, res) => {
   return res.status(404).json({ error: "Route not found" })
