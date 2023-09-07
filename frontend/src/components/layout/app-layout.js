@@ -139,9 +139,9 @@ export const AppLayout = () => {
                 </Container>
             </AppBar>
             <Routes>
-                <Route path="/" exact element={<Home />} />
+                {/* <Route path="/" element={<Home />} /> */}
 
-                <Route path="/books" element={<BooksList />} />
+                <Route path="/books" exact element={<BooksList />} />
 
                 <Route
                     path="/books/:bookIsbn"
@@ -174,7 +174,7 @@ export const AppLayout = () => {
                         </WithLoginProtector>
                     }
                 />
-                {/* <Route path="*" element={<Navigate to="/" replace />} /> */}
+                <Route path="/" element={<Navigate to="/books" replace />} />
             </Routes>
 
             <LoginDialog
