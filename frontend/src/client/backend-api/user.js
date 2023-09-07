@@ -16,7 +16,7 @@ const UserApi = {
     return res.json()
   },
   getBorrowBook: async () => {
-    const res = await fetch("/user/borrowed-books", { method: "GET" })
+    const res = await fetch("https://librarysystemapi.azurewebsites.net/api/user/borrowed-books", { method: "GET" })
     return res.json()
   },
   login: async (username, password) => {
