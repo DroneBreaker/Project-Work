@@ -66,7 +66,7 @@ export const BooksList = () => {
                     </Button>
                 )}
             </div>
-            {books.length > 0 ? (
+            {books?.length > 0 ? (
                 <>
                     <div className={classes.tableContainer}>
                         <TableContainer component={Paper}>
@@ -166,7 +166,7 @@ export const BooksList = () => {
                     </div>
                 </>
             ) : (
-                
+
                 <Typography mx={45} mt={'20%'} variant="h6">No books found. Please try again!</Typography>
             )}
 

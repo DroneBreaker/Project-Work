@@ -139,9 +139,9 @@ export const AppLayout = () => {
                 </Container>
             </AppBar>
             <Routes>
-                <Route path="/" exact element={<Home />} />
+                {/* <Route path="/" exact element={<Home />} /> */}
 
-                <Route path="/books" element={<BooksList />} />
+                <Route path="/" element={<BooksList />} />
 
                 <Route
                     path="/books/:bookIsbn"
